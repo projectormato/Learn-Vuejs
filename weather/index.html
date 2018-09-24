@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>お天気APIくん</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Weather Forcast</h1>
+    <div id="app" class="weather_box">
+      <div class="weather_info">
+        <p class="weather_city">{{ city }}</p>
+        <p class="weather_condition">{{ condition.main }}</p>
+        <p class="weather_temp">{{ temp | roundUp }}&deg;C</p>
+      </div>
+      <p v-if="condition.main == 'Rain'"><img src="img/rain.jpg" alt="Rainy"></p>
+      <p v-else-if="condition.main == 'Clouds'"><img src="img/cloudy.jpg" alt="Cloudy"></p>
+      <p v-else-if="condition.main == 'Clear'"><img src="img/sunny.jpg" alt="Sunny"></p>
+      <p v-else><img src="img/sunset.jpg" alt="Sunset"></p>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
