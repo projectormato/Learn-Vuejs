@@ -1,7 +1,8 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!!'
+    message: 'Hello Vue!!',
+    msg: 'text'
   }
 })
 
@@ -66,5 +67,45 @@ var app7 = new Vue({
       { id: 1, text: 'Cheese' },
       { id: 2, text: 'Whatever else humans are supposed to eat' }
     ]
+  }
+})
+
+var vm = new Vue({
+  el: '#getter',
+  data: {
+    message: 'Hello'
+  },
+  computed: {
+    // 算出 getter 関数
+    reversedMessage: function () {
+      // `this` は vm インスタンスを指します
+      return this.message.split('').reverse().join('')
+    }
+  }
+})
+
+var style = new Vue({
+  el: '#stylesample',
+  data: {
+    styleObject: {
+      color: 'red',
+      fontSize: '13px'
+    }
+  }
+})
+
+var ifinput = new Vue({
+  el: '#ifinput',
+  data: {
+    loginType: 'username'
+  },
+  methods: {
+    togglelogin: function () {
+      if (this.loginType === 'username') {
+        return this.loginType = 'email'
+      }else{
+        return this.loginType = 'username'
+      }
+    }
   }
 })
