@@ -30,6 +30,53 @@
       <button v-on:click="togglelogin">toggle login type</button>
     </div>
 
+    <ul id="list-sample">
+      <li v-for="(item, index) of items">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+      </li>
+    </ul>
+
+    <div id="list-sample2">
+      <div v-for="(value, key, index) in object">
+        {{ index }}. {{ key }}: {{ value }}
+      </div>
+    </div>
+
+    <div id="list-sample3">
+      <li v-for="n in evenNumbers">{{ n }}</li>
+    </div>
+
+    <div id="on-sample">
+      <button v-on:click="counter += 1">Add One</button>
+      <p>The button above has been clicked {{ counter }} times.</p>
+    </div>
+
+    <div id="model-sample">
+      <input v-model="message" placeholder="edit me">
+      <p>Message is: {{ message }}</p>
+    </div>
+
+    <div id="components-demo">
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+    </div>
+    <!-- <div id="blog-posts-events-demo">
+      <blog-post title="My journey with Vue"></blog-post>
+      <blog-post title="Blogging with Vue"></blog-post>
+      <blog-post title="Why Vue is so fun"></blog-post>
+    </div> -->
+    <div id="blog-posts-events-demo">
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post
+          v-for="post in posts"
+          v-bind:key="post.id"
+          v-bind:post="post"
+          v-on:enlarge-text="postFontSize += 0.1"
+        ></blog-post>
+      </div>
+    </div>
+
     <script src="./main.js"></script>
   </body>
 </html>

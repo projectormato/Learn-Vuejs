@@ -109,3 +109,98 @@ var ifinput = new Vue({
     }
   }
 })
+
+var listsample = new Vue({
+  el: '#list-sample',
+  data: {
+    parentMessage: 'Parent',
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+
+
+var listsample2 = new Vue({
+  el: '#list-sample2',
+  data: {
+    object: {
+      firstName: 'John',
+      lastName: 'Doe',
+      age: 30
+    }
+  }
+})
+
+var listsample3 = new Vue({
+  el: '#list-sample3',
+  data: {
+    numbers: [ 1, 2, 3, 4, 5 ]
+  },
+  computed: {
+    evenNumbers: function () {
+      return this.numbers.filter(function (number) {
+        return number % 2 === 0
+      })
+    }
+  }
+})
+
+
+var onexample = new Vue({
+  el: '#on-sample',
+  data: {
+    counter: 10
+  }
+})
+
+var modelsample = new Vue({
+  el: '#model-sample',
+  data: {
+    message: '' //これでバインディングされるみたい
+  }
+})
+
+
+// button-counter と呼ばれる新しいコンポーネントを定義します
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+})
+
+new Vue({ el: '#components-demo' })
+
+
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <button v-on:click="$emit('enlarge-text')">
+        Enlarge text
+      </button>
+      <div v-html="post.content"></div>
+    </div>
+  `
+})
+new Vue({
+  el: '#blog-posts-events-demo',
+  data: {
+    posts: [
+      { id: 1, title: 'My journey with Vue' },
+      { id: 2, title: 'Blogging with Vue' },
+      { id: 3, title: 'Why Vue is so fun' }
+    ],
+    postFontSize: 1
+  }
+})
