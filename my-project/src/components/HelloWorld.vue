@@ -90,6 +90,9 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  created: function () {
+    console.log('Environment Variable: ', process.env.API_ENDPOINT)
   }
 }
 </script>
