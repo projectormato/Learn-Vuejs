@@ -92,7 +92,7 @@ export default {
     }
   },
   created: function () {
-    console.log(${process.env.API_ENDPOINT})
+    console.log("environment variable:", process.env.API_ENDPOINT)
   }
 }
 </script>
